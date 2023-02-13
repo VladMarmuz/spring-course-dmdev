@@ -24,7 +24,7 @@ spring.profiles.active: qa
 logging:
   level:
     root: WARN
-    com.dmdev.spring.database.pool: INFO
+    com.marmuz.spring.database.pool: INFO
   file:
     name: marmuz.log
     path: /
