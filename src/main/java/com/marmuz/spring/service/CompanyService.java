@@ -1,20 +1,21 @@
 package com.marmuz.spring.service;
 
-import com.marmuz.spring.database.entity.Company;
-import com.marmuz.spring.database.repository.CrudRepository;
+import com.marmuz.spring.database.repository.CompanyRepository;
 import com.marmuz.spring.dto.CompanyReadDto;
 import com.marmuz.spring.listener.entity.AccessType;
 import com.marmuz.spring.listener.entity.EntityEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CompanyService {
-    private final CrudRepository<Integer, Company> companyRepository;
+    private final CompanyRepository companyRepository;
     private final UserService userService;
     private final ApplicationEventPublisher eventPublisher;
 

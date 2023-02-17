@@ -1,14 +1,13 @@
 package com.marmuz.spring.service;
 
 import com.marmuz.spring.database.entity.Company;
-import com.marmuz.spring.database.repository.CrudRepository;
+import com.marmuz.spring.database.repository.CompanyRepository;
 import com.marmuz.spring.dto.CompanyReadDto;
 import com.marmuz.spring.listener.entity.EntityEvent;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
@@ -23,7 +22,7 @@ import static org.mockito.Mockito.*;
 class CompanyServiceTest {
     private static final Integer COMPANY_ID = 1;
     @Mock
-    private CrudRepository<Integer, Company> companyRepository;
+    private CompanyRepository companyRepository;
     @Mock
     private UserService userService;
     @Mock
