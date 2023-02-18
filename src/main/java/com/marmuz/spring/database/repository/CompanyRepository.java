@@ -15,6 +15,7 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
     @Query("select c from Company c where c.name = :name2")
     Optional<Company> findByName(@Param("name2")String name);
 // Collection, Stream (batch, close)
+
     List<Company> findAllByNameContainingIgnoreCase(String fragment);
 
 
