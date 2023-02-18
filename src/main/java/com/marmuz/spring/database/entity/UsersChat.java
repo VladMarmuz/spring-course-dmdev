@@ -32,6 +32,6 @@ public class UsersChat implements BaseEntity<Long> {
 
     public void setUser(User user) {
         this.user = user;
-        this.user.getUsersChat().add(this);
+        this.user.getUserChats().add(this);
     }
 }

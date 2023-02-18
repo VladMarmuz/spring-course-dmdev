@@ -1,17 +1,16 @@
 package com.marmuz.spring.database.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @Data
+@ToString(exclude = "userChats")
+@EqualsAndHashCode(of = "username")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -36,6 +35,6 @@ public class User implements BaseEntity<Long> {
 
     @Builder.Default
     @OneToMany(mappedBy = "user")
-    private List<UsersChat> usersChat = new ArrayList<>();
+    private List<UsersChat> userChats = new ArrayList<>();
 
 }

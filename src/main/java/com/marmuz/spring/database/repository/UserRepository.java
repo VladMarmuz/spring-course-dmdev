@@ -1,14 +1,23 @@
 package com.marmuz.spring.database.repository;
 
-import com.marmuz.spring.database.pool.ConnectionPool;
+import com.marmuz.spring.database.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    private final ConnectionPool pool1;
+    @Query("select u from User u " +
+            "where u.firstname like %:firstname% and u.lastname like %:lastname%")
+    List<User> findAllBy(String firstname, String lastname);
 
-    public UserRepository(ConnectionPool pool1) {
-        this.pool1 = pool1;
-    }
+    @Query(
+            value = "SELECT u.* FROM users u WHERE u.username = :username",
+            nativeQuery = true
+    )
+    List<User> findAllByUsername(String username);
+
 }
