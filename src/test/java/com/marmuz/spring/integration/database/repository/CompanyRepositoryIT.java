@@ -25,7 +25,10 @@ class CompanyRepositoryIT {
     private final EntityManager entityManager;
     private final TransactionTemplate transactionTemplate;
     private final CompanyRepository companyRepository;
-    
+
+
+
+
     @Test
     void delete(){
         var maybeCompany = companyRepository.findById(APPLE_ID);

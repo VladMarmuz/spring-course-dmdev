@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,10 +21,15 @@ class UserRepositoryIT {
     private final UserRepository userRepository;
 
     @Test
-    void checkPageable(){
-        var pageable = PageRequest.of(1, 2, Sort.by("id"));
-        var result = userRepository.findAllBy(pageable);
-        assertThat(result).hasSize(2);
+    void checkPageable() {
+        var pageable = PageRequest.of(0, 2, Sort.by("id"));
+        var page = userRepository.findAllBy(pageable);
+        assertThat(page).hasSize(2);
+        page.forEach(user -> System.out.println(user.getCompany().getName()));
+        while (page.hasNext()) {
+            page = userRepository.findAllBy(page.nextPageable());
+            page.forEach(user -> System.out.println(user.getCompany().getName()));
+        }
     }
 
     @Test
@@ -35,7 +39,7 @@ class UserRepositoryIT {
                 .and(sortBy.by(User::getLastname));
 
         var id = Sort.by("firstname").and(Sort.by("lastname"));
-        var users = userRepository.findTop3ByBirthDateBefore(LocalDate.now(),sort);
+        var users = userRepository.findTop3ByBirthDateBefore(LocalDate.now(), sort);
         assertThat(users).hasSize(3);
 
     }
