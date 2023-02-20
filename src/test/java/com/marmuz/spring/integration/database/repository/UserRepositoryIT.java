@@ -3,6 +3,7 @@ package com.marmuz.spring.integration.database.repository;
 import com.marmuz.spring.database.entity.Role;
 import com.marmuz.spring.database.entity.User;
 import com.marmuz.spring.database.repository.UserRepository;
+import com.marmuz.spring.dto.UserFilter;
 import com.marmuz.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,15 @@ class UserRepositoryIT {
 
     private final UserRepository userRepository;
 
+
+    @Test
+    void checkCustomImplementation(){
+        UserFilter userFilter = new UserFilter(
+              null,"%ov%", LocalDate.now()
+        );
+        var allByFilter = userRepository.findAllByFilter(userFilter);
+        System.out.println();
+    }
 
     @Test
     void checkProjection() {
