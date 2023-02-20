@@ -21,11 +21,18 @@ class UserRepositoryIT {
 
     private final UserRepository userRepository;
 
+    @Test
+    void checkAuditing(){
+        var user = userRepository.findById(1L).get();
+        user.setBirthDate(user.getBirthDate().plusYears(1L));
+        userRepository.flush();
+        System.out.println();
+    }
 
     @Test
-    void checkCustomImplementation(){
+    void checkCustomImplementation() {
         UserFilter userFilter = new UserFilter(
-              null,"%ov%", LocalDate.now()
+                null, "%ov%", LocalDate.now()
         );
         var allByFilter = userRepository.findAllByFilter(userFilter);
         System.out.println();
