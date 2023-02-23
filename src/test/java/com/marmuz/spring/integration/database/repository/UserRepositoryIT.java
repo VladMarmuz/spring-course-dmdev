@@ -3,14 +3,17 @@ package com.marmuz.spring.integration.database.repository;
 import com.marmuz.spring.database.entity.Role;
 import com.marmuz.spring.database.entity.User;
 import com.marmuz.spring.database.repository.UserRepository;
+import com.marmuz.spring.dto.PersonalInfo;
 import com.marmuz.spring.dto.UserFilter;
 import com.marmuz.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +25,21 @@ class UserRepositoryIT {
     private final UserRepository userRepository;
 
     @Test
-    void checkAuditing(){
+    void checkBatch() {
+        var allUsers = userRepository.findAll();
+        userRepository.updateCompanyAndRole(allUsers);
+
+    }
+
+    @Test
+    void checkJdbcTemplate() {
+        var foundUsers = userRepository.findAllByCompanyIdAndRole(1, Role.USER);
+        assertThat(foundUsers).hasSize(1);
+    }
+
+    @Test
+    @Commit
+    void checkAuditing() {
         var user = userRepository.findById(1L).get();
         user.setBirthDate(user.getBirthDate().plusYears(1L));
         userRepository.flush();
