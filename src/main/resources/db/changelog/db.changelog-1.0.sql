@@ -1,9 +1,14 @@
+--liquibase formatted sql
+
+--changeset vmarmuz:1
 CREATE TABLE IF NOT EXISTS company
 (
     id SERIAL PRIMARY KEY ,
     name VARCHAR(64) NOT NULL UNIQUE
     );
+--rollback DROP TABLE company
 
+--changeset vmarmuz:2
 CREATE TABLE IF NOT EXISTS company_locales
 (
     company_id INT REFERENCES company (id),
@@ -12,6 +17,7 @@ CREATE TABLE IF NOT EXISTS company_locales
     PRIMARY KEY (company_id, lang)
     );
 
+--changeset vmarmuz:3
 CREATE TABLE IF NOT EXISTS users
 (
     id BIGSERIAL PRIMARY KEY ,
@@ -23,6 +29,7 @@ CREATE TABLE IF NOT EXISTS users
     company_id INT REFERENCES company (id)
     );
 
+--changeset vmarmuz:4
 CREATE TABLE IF NOT EXISTS payment
 (
     id BIGSERIAL PRIMARY KEY ,
@@ -30,12 +37,14 @@ CREATE TABLE IF NOT EXISTS payment
     receiver_id BIGINT NOT NULL REFERENCES users (id)
     );
 
+--changeset vmarmuz:5
 CREATE TABLE IF NOT EXISTS chat
 (
     id BIGSERIAL PRIMARY KEY ,
     name VARCHAR(64) NOT NULL UNIQUE
     );
 
+--changeset vmarmuz:6
 CREATE TABLE IF NOT EXISTS users_chat
 (
     id BIGSERIAL PRIMARY KEY ,
