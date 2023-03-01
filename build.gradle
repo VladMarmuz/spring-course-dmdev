@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+    testImplementation "org.testcontainers:postgresql:1.16.3"
 }
 
 test {

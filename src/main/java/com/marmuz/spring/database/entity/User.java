@@ -16,7 +16,7 @@ import java.util.List;
 )
 @Data
 @ToString(exclude = "userChats")
-@EqualsAndHashCode(of = "username")
+@EqualsAndHashCode(of = "username", callSuper=false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
