@@ -1,10 +1,12 @@
-package com.marmuz.spring.config;
+package com.marmuz.spring.database.config;
 
-import com.marmuz.spring.condition.JpaCondition;
-import jakarta.annotation.PostConstruct;
+import com.marmuz.spring.database.config.condition.JpaCondition;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.PostConstruct;
+
 @Slf4j
 @Conditional(JpaCondition.class)
 @Configuration

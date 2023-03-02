@@ -1,11 +1,11 @@
 package com.marmuz.spring.database.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

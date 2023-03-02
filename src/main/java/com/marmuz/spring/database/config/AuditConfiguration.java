@@ -1,4 +1,4 @@
-package com.marmuz.spring.config;
+package com.marmuz.spring.database.config;
 
 import com.marmuz.spring.ApplicationRunner;
 import org.springframework.context.annotation.Bean;

@@ -3,8 +3,6 @@ package com.marmuz.spring.database.repository;
 import com.marmuz.spring.database.entity.Role;
 import com.marmuz.spring.database.entity.User;
 import com.marmuz.spring.dto.PersonalInfo2;
-import jakarta.persistence.LockModeType;
-import jakarta.persistence.QueryHint;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,6 +10,8 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.LockModeType;
+import javax.persistence.QueryHint;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

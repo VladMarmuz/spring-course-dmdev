@@ -1,5 +1,6 @@
 package com.marmuz.spring.service;
 
+import com.marmuz.spring.dto.UserFilter;
 import com.marmuz.spring.mapper.UserCreateEditMapper;
 import com.marmuz.spring.mapper.UserReadMapper;
 import com.marmuz.spring.database.repository.UserRepository;
@@ -20,6 +21,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserReadMapper userReadMapper;
     private final UserCreateEditMapper userCreateEditMapper;
+
+    public List<UserReadDto> findAll(UserFilter filter){
+        return userRepository.findAllByFilter(filter).stream()
+                .map(userReadMapper::map)
+                .toList();
+    }
 
     public List<UserReadDto> findAll() {
         return userRepository.findAll().stream().map(userReadMapper::map).toList();

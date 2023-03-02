@@ -1,6 +1,6 @@
 package com.marmuz.spring;
 
-import com.marmuz.spring.config.DatabaseProperties;
+import com.marmuz.spring.database.config.DatabaseProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;

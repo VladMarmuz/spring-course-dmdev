@@ -1,4 +1,4 @@
-package com.marmuz.spring.config.condition;
+package com.marmuz.spring.database.config.condition;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;

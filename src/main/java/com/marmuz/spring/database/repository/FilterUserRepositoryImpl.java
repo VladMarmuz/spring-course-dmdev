@@ -4,13 +4,13 @@ import com.marmuz.spring.database.entity.Role;
 import com.marmuz.spring.database.entity.User;
 import com.marmuz.spring.dto.PersonalInfo;
 import com.marmuz.spring.dto.UserFilter;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class FilterUserRepositoryImpl implements FilterUserRepository {
     private static final String FIND_BY_COMPANY_AND_ROLE = """
             SELECT firstname, lastname, birth_date
             FROM users
-             WHERE company_id = ? AND role = ?""";
+            WHERE company_id = ? AND role = ?""";
 
     private static final String UPDATE_COMPANY_AND_ROLE = """
             UPDATE users
